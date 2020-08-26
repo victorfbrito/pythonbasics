@@ -1,0 +1,171 @@
+
+###FALSOS EM PYTHON
+
+constants defined to be false: None and False
+zero of any numeric type: 0, 0.0, 0j, Decimal(0), Fraction(0, 1)
+empty sequences and collections: '"", (), [], {}, set(), range(0)
+
+
+###ACESSAR OS DADOS DE UMA LISTA
+
+cities = ['new york city', 'mountain view', 'chicago', 'los angeles']
+
+for index in range(len(cities)):
+    cities[index] = cities[index].title()
+
+####RANGE
+
+The range() function takes three integer arguments, the first and third of which are optional:
+
+The 'start' argument is the first number of the sequence. If unspecified, 'start' defaults to 0.
+The 'stop' argument is 1 more than the last number of the sequence. This argument must be specified.
+The 'step' argument is the difference between each number in the sequence. If unspecified, 'step' defaults to 1.
+
+###MODIFICAR ITENS DA LISTA
+
+usernames = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+
+for i in range(len(usernames)):
+    usernames[i] = usernames[i].lower().replace(" ", "_")
+
+print(usernames)
+
+###CHECANDO ITENS DA LISTA
+
+tokens = ['<greeting>', 'Hello World!', '</greeting>']
+
+count = 0
+for token in tokens:
+    if token[0] == '<' and token[-1] == '>':
+        count += 1
+
+print(count)
+
+###ADICIONANDO EM NOVA LISTA
+
+names = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+usernames = []
+
+for name in names:
+    usernames.append(name.lower().replace(" ", "_"))
+
+### ADICIONANDO EM LISTA / LIST COMPREHENSION
+
+usernames = [name.lower().replace(" ","_") for name in names]
+
+### ADD AO DICIONARIO COM FOR / CONTAGEM DE PALAVRAS
+
+book_title =  ['great', 'expectations','the', 'adventures', 'of', 'sherlock','holmes','the','great','gasby','hamlet','adventures','of','huckleberry','fin']
+word_counter = {}
+for word in book_title:
+    if word not in word_counter:
+        word_counter[word] = 1
+    else:
+        word_counter[word] += 1
+
+###ADD AO DICIONARIO COM GET / CONTAGEM DE PALAVRAS
+
+book_title =  ['great', 'expectations','the', 'adventures', 'of', 'sherlock','holmes','the','great','gasby','hamlet','adventures','of','huckleberry','fin']
+word_counter = {}
+for word in book_title:
+    word_counter[word] = word_counter.get(word, 0) + 1
+
+### PUXAR DE DICIONARIO COM KEY E VALOR
+
+for key, value in dic.items():
+    print("key: {} value: {}".format(key, value))
+
+### COMPARAR OS ITENS DE UM DICIONARIO COM TABELA
+
+result = 0
+basket_items = {'apples': 4, 'oranges': 19, 'kites': 3, 'sandwiches': 8}
+fruits = ['apples', 'oranges', 'pears', 'peaches', 'grapes', 'bananas']
+
+#Iterate through the dictionary
+for i,j in basket_items.items():
+#if the key is in the list of fruits, add the value (number of fruits) to result
+    if i in fruits:
+        result+=j
+
+### CORTAR O TEXTO EM CERTO NUMERO DE CARACTERES
+
+ headlines = ["Local Bear Eaten by Man",
+             "Legislature Announces New Laws",
+             "Peasant Discovers Violence Inherent in System",
+             "Cat Rescues Fireman Stuck in Tree",
+             "Brave Knight Runs Away",
+             "Papperbok Review: Totally Triffic"]
+
+news_ticker = ""
+# write your loop here
+for headline in headlines:
+    news_ticker += headline + " "
+    if len(news_ticker) >=140:
+        news_ticker = news_ticker[:140]
+        break
+print(news_ticker)
+
+### ENUMERAR ITENS DA LISTA / ZIP
+
+letters = ['a', 'b', 'c']
+nums = [1, 2, 3]
+
+for letter, num in zip(letters, nums):
+    print("{}: {}".format(letter, num))
+
+### ENUMERAR ITENS DA LISTA / ENUMERATE
+
+letters = ['a', 'b', 'c', 'd', 'e']
+for i, letter in enumerate(letters):
+    print(i, letter)
+
+###CRIAR DICIONARIO COM ZIP
+
+cast_names = ["Barney", "Robin", "Ted", "Lily", "Marshall"]
+cast_heights = [72, 68, 72, 66, 76]
+
+cast = dict(zip(cast_names,cast_heights))# replace with your code
+print(cast)
+
+###TRANSPOSE / ZIP
+
+data = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (9, 10, 11))
+
+data_transpose = tuple(zip(*data))
+print(data_transpose)
+
+### ENUMERAR COM LISTAS 
+
+cast = ["Barney Stinson", "Robin Scherbatsky", "Ted Mosby", "Lily Aldrin", "Marshall Eriksen"]
+heights = [72, 68, 72, 66, 76]
+
+for i, act in enumerate(cast):
+    cast[i] = act + " " + str(heights[i])
+
+print(cast)
+
+### PEGA APENAS O PRIMEIRO NOME
+
+names = ["Rick Sanchez", "Morty Smith", "Summer Smith", "Jerry Smith", "Beth Smith"]
+
+first_names =[name.split()[0].lower() for name in names]
+
+print(first_names)
+
+### MULTIPLOS DE UM NUMERO
+
+multiples_3 =[x*3 for x in range(1,21)]
+print(multiples_3)
+
+### PEGAR ITENS DO DICIONARIO CONDICIONAL
+
+scores = {
+             "Rick Sanchez": 70,
+             "Morty Smith": 35,
+             "Summer Smith": 82,
+             "Jerry Smith": 23,
+             "Beth Smith": 98
+          }
+
+passed =[name for name,score in scores.items() if score >=65 ] # write your list comprehension here
+print(passed)
